@@ -93,7 +93,7 @@ div.polaroid {
   
   .text {
     color: BLACK;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Amaranth';
     font-weight: bolder;
     padding: 65px 102px;
@@ -104,8 +104,8 @@ div.polaroid {
     display: block;
     text-align: center;
       font-family: "Amaranth";
-      padding: 5px;
-      font-size: 14px;
+      padding: 1px;
+      font-size: 17px;
       color: #2c7798;
       cursor: pointer;
     
