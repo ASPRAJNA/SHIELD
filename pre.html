@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>SHIELD</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style> 
+  .loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.loader {
+    background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
+    position: fixed;
+    top:50%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    perspective: 800px;
+    position: relative;
+    animation: loader 2s infinite ease;
+  }
+  
+  .inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;  
+  }
+  
+  .inner.one {
+    left: 0%;
+    top: 0%;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 5px solid #EFEFFA;
+  }
+  
+  .inner.two {
+    right: 0%;
+    top: 0%;
+    animation: rotate-two 1s linear infinite;
+    border-right: 5px solid #EFEFFA;
+  }
+  
+  .inner.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotate-three 1s linear infinite;
+    border-top: 5px solid #EFEFFA;
+  }
+  
+  @keyframes rotate-one {
+    0% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes rotate-two {
+    0% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes rotate-three {
+    0% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+  }
+  .col{
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+div.polaroid {
+  display:block;
+  width: 200px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+div.rotate_right {
+display:block;
+  float: left;
+  -ms-transform: rotate(7deg); /* IE 9 */
+  -webkit-transform: rotate(7deg); /* Safari */
+  transform: rotate(7deg);
+}
+#prea{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 750px) {
+    #prea{
+        display:inline-block;
+        justify-content: center;
+    }
+}
+div.rotate_left {
+display:block;
+  float: left;
+  -ms-transform: rotate(-8deg); /* IE 9 */
+  -webkit-transform: rotate(-8deg); /* Safari */
+  transform: rotate(-8deg);
+}
+</style>
+</head>
+<body >
+  <div class="content" style="display:none;">
+  <nav id="scroller"  class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " style=" background-color: #2c7798;; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding:15px;">
+    <li id='navb'><a class="ac" href="index.html" style="text-decoration: none; color:white; ">HOME</a></li>
+        <li id='navb'><a class="ac" href="pre.html" style="text-decoration: none; color: white ;">PRECAUTION</a></li>
+        <li id='navb'><a class="ac" href="kit.html" style="text-decoration: none; color: white; ">COVID-KIT</a></li>
+        <li id='navb'><a  class="ac" href="help.html" style="text-decoration: none; color: white ;">HELPLINE-NO</a></li>
+    </nav>
+    <br>
+    <br><br>
+    <br>
+    <div style="margin: 30px;">
+<div id="prea">
+<div class="polaroid rotate_right">
+  <img src="https://thumbs.dreamstime.com/b/india-map-covid-virus-concept-coronavirus-spread-to-all-over-world-infected-to-all-countries-vector-india-map-179320747.jpg" alt="Pulpit rock" width="180" height="150">
+  <p class="caption">COVID-19 IN INDIA</p>
+</div>
+
+<div class="polaroid rotate_left">
+  <img src="https://c.ndtvimg.com/2021-08/imokvbr_coronavirus-india-reuters-2021_650x400_18_August_21.jpg" alt="Monterosso al Mare" width="180" height="150">
+  <p class="caption">COVID TEST</p>
+</div>
+<div class="polaroid rotate_right">
+  <img src="https://static.toiimg.com/thumb/msid-82395327,imgsize-83205,width-400,resizemode-4/82395327.jpg" alt="Pulpit rock" width="180" height="150">
+  <p class="caption">COVID VACCINE</p>
+</div>
+
+<div class="polaroid rotate_left">
+  <img src="https://www.mountelizabeth.com.sg/images/default-source/default-album/hand-wash-warm-water.jpg?sfvrsn=e09acc11_2" alt="Monterosso al Mare" width="180" height="150">
+  <p class="caption">HAND WASH</p>
+</div>
+<div class="polaroid rotate_right">
+    <img src="https://images.livemint.com/img/2020/09/08/600x338/PTI03-05-2020_000220A_1589770191276_1599528966359.jpg" alt="Pulpit rock" width="180" height="150">
+    <p class="caption">SANITIZATION</p>
+  </div>
+  
+  <div class="polaroid rotate_left">
+    <img src="https://content.presspage.com/uploads/2170/1920_returntocampuskitsforstudentsfacultyandstaff.jpg" alt="Monterosso al Mare" width="180" height="150">
+    <p class="caption">COVID-KIT</p>
+  </div>
+</div>
+</div>
+<br><br><br>
+<footer style="background-color: #2c7798;padding:60px;">
+  <h3>PRECAUTION</h3>
+  </footer>
+<div style="padding: 40px;font-family:'Amaranth';font-size:20px;text-align:justify">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col">
+<h2 style="font-family: 'Times New Roman', Times, serif;">VACCINE</h2>
+<h3></h3>
+    </div>
+    <div class="col">
+      <h2 style="font-family: 'Times New Roman', Times, serif;">COVID TEST</h2>
+      <h3></h3>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 style="font-family: 'Times New Roman', Times, serif;">SOCIAL DISTANCING</h2>
+        <h3></h3>
+      </div>
+      <div class="col">
+        <h2 style="font-family: 'Times New Roman', Times, serif;">WEAR A MASK</h2>
+        <h3></h3>
+      </div>
+      </div>
+  
+  <div class="row">
+    <div class="col">
+      <h2 style="font-family: 'Times New Roman', Times, serif;">WASH YOUR HANDS</h2>
+      <h3></h3>
+    </div>
+    <div class="col">
+      <h2 style="font-family: 'Times New Roman', Times, serif;">SANITIZATION</h2>
+      <h3></h3>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 style="font-family: 'Times New Roman', Times, serif;">COVID-KIT</h2>
+        <h3></h3>
+      </div>
+      <div class="col">
+        <h2 style="font-family: 'Times New Roman', Times, serif;">HEALTHY FOOD & HOT WATER</h2>
+        <h3></h3>
+      </div>
+      </div>
+  </div>
+</div>
+</div>
+<footer style="background-color: #2c7798;">
+    <h3>Wear a mask, Wash your hands and  Stay safe</h3>
+    </footer>
+    </div>
+    <center>
+      <div class="loader-wrapper">
+      <div class="loadwrap">
+          <div class="loader">
+           <div class="inner one"></div>
+           <div class="inner two"></div>
+           <div class="inner three"></div>
+         </div>
+         </div>
+         </div>
+      </center>
+         <script>
+          $(window).on("load",function(){
+            $(".loader-wrapper").fadeOut(4000);
+            $(".content").fadeIn(5000);
+          });
+      window.onscroll = function() {myFunction()};
+      
+      function myFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop >300) {
+          document.getElementById("scroller").style.background='#ffffffee'; 
+          var x = document.getElementsByClassName("ac");
+          var i;
+          for (i = 0; i < x.length; i++) {
+          x[i].style.color = "#2c7798";
+          x[i].style.display='inline-block';
+          }
+          
+        } else {
+
+          document.getElementById("scroller").style.background='#2c7798';
+          var x = document.getElementsByClassName("ac");
+          var i;
+          for (i = 0; i < x.length; i++) {
+          x[i].style.color = "white";
+          x[i].style.display='inline-block';
+          
+          }
+          }
+        }
+      
+      </script> 
+</body>
+
+</html>

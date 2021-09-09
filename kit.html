@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>SHIELD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style> 
+  .loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.loader {
+    background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);
+    position: fixed;
+    top:50%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    perspective: 800px;
+    position: relative;
+    animation: loader 2s infinite ease;
+  }
+  
+  .inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;  
+  }
+  
+  .inner.one {
+    left: 0%;
+    top: 0%;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 5px solid #EFEFFA;
+  }
+  
+  .inner.two {
+    right: 0%;
+    top: 0%;
+    animation: rotate-two 1s linear infinite;
+    border-right: 5px solid #EFEFFA;
+  }
+  
+  .inner.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotate-three 1s linear infinite;
+    border-top: 5px solid #EFEFFA;
+  }
+  
+  @keyframes rotate-one {
+    0% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes rotate-two {
+    0% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+  
+  @keyframes rotate-three {
+    0% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+  }
+    .pla {
+        list-style-type: none;
+        border: 1px solid black;
+      }
+  
+      .zoom {
+        overflow: hidden;
+        
+  
+      }
+  
+      .zoom img {
+        overflow: hidden;
+        transition: 0.4s all ease-in-out;
+        width: 100%;
+        height: 350px;
+        
+      }
+  
+      .zoom:hover img {
+        transform: scale(1.2);
+       
+      }
+  
+      .zoom:hover img {
+        overflow: hidden;
+      }
+      .image {
+        width: 100%;
+        height: 350px;
+  
+      }
+      input {
+        padding: 10px;
+        font-family: "Shrikhand";
+        margin-top: 20px;
+        width: 100%;
+      }
+      p,
+      input {
+        padding: 10px;
+        font-family: "Shrikhand";
+        margin-top: 20px;
+      }
+</style>
+</head>
+<body >
+  <div class="content" style="display:none;">
+    <nav id="scroller"  class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar " style=" background-color: #2c7798;; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding:15px;">
+      <li id='navb'><a class="ac" href="index.html" style="text-decoration: none; color:white; ">HOME</a></li>
+          <li id='navb'><a class="ac" href="pre.html" style="text-decoration: none; color: white ;">PRECAUTION</a></li>
+          <li id='navb'><a class="ac" href="kit.html" style="text-decoration: none; color: white; ">COVID-KIT</a></li>
+          <li id='navb'><a  class="ac" href="help.html" style="text-decoration: none; color: white ;">HELPLINE-NO</a></li>
+      </nav>
+    <br>
+    <br><br>
+    <br>
+    <div style="margin: 30px;">
+        <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+            <input type="search" ng-model="test" placeholder="Search">
+        
+            <div class="container" style="padding:10px;list-style-type: none; margin-top: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);" ng-repeat="x in names|filter:  test| orderBy:myOrderBy">
+              <h1 style=" font-family: 'Bigshot One';font-size: 32px;">{{x.name}}</h1><br>
+              <div class="row">
+                <div class="col-sm-7" style=" font-family: 'Arya';font-size: 22px;">
+                  {{x.details}}
+                </div>
+                <div class="col-sm-5">
+        
+                  <div style="padding: 10px;margin: 5px;" class="zoom">
+                    <img src="{{x.imgn}}" alt="{{x.name}}">
+                  </div>
+                    <br><br>            <center>
+                    <a href="{{x.links}}"><button type="button" class="btn btn-outline-dark"
+                      style="font-size: larger;font-weight: bolder;margin-top: 20px;"><span>READ MORE </span><i
+                        class="fa fa-angle-double-right" style="font-size:24px"></i> </button></a>
+                        </center>
+                  
+                </div>
+              </div>
+            </div>
+        
+        
+        
+          </div>
+</div>
+<footer style="background-color: #2c7798;">
+    <h3>Wear a mask, Wash your hands and  Stay safe</h3>
+    </footer>
+    </div>
+    <center>
+      <div class="loader-wrapper">
+      <div class="loadwrap">
+          <div class="loader">
+           <div class="inner one"></div>
+           <div class="inner two"></div>
+           <div class="inner three"></div>
+         </div>
+         </div>
+         </div>
+      </center>
+         <script>
+          $(window).on("load",function(){
+            $(".loader-wrapper").fadeOut(4000);
+            $(".content").fadeIn(5000).slideDown(200);
+          });
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope) {
+          $scope.names = [
+            { links:"https://en.wikipedia.org/wiki/Pulse_oximetry", imgn: "https://www.capecodhealth.org/app/files/public/10346/pulseox_cchn.jpg", details: "Pulse oximetry is a noninvasive and painless test that measures your oxygen saturation level, or the oxygen levels in your blood. It can rapidly detect even small changes in how efficiently oxygen is being carried to the extremities furthest from the heart, including the legs and the arms.The pulse oximeter is a small, clip-like device that attaches to a body part, like toes or an earlobe. It’s most commonly put on a finger, and it’s often used in a critical care setting like emergency rooms or hospitals.During a pulse oximetry reading, a small clamp-like device is placed on a finger, earlobe, or toe. Small beams of light pass through the blood in the finger, measuring the amount of oxygen. It does this by measuring changes of light absorption in oxygenated or deoxygenated blood. This is a painless process.The pulse oximeter will thus be able to tell you your oxgen saturation levels along with your heart rate.", name: "OXIMETER" },
+            { links:"https://en.wikipedia.org/wiki/Thermometer", imgn: "https://eclats-antivols.fr/78640-large_default/non-contact-body-infrared-thermometer-is-specially-designed-to-take-the-body-temperature.jpg", details: "A thermometer is a tool that measures temperature — how hot or cold something is. Thermometers are used to see if you have a fever or tell you how cold it is outside.Made up of thermo (heat) and meter (measuring device), the meaning of the word thermometer is pretty straightforward. Thermometers measure temperatures in degrees, according to either the Celsius or Fahrenheit system. Meteorologists use thermometers to find out how hot it is or if it's below freezing. Doctors use thermometers to check your body temperature — a very high or low body temperature means you're sick.", name: "THERMOMETER", },
+            { links:"https://en.wikipedia.org/wiki/Paracetamol", imgn: "http://mcareexports.com/wp-content/uploads/2021/05/Paraval-500mg-Tablet.jpg", details: "Paracetamol is a common painkiller used to treat aches and pain. It can also be used to reduce a high temperature.It's available combined with other painkillers and anti-sickness medicines. It's also an ingredient in a wide range of cold and flu remedies.Paracetamol can be taken with or without food.The usual dose for adults is one or two 500mg tablets up to 4 times in 24 hours.Always leave at least 4 hours between doses. Overdosing on paracetamol can cause serious side effects. Do not be tempted to increase the dose or to take a double dose if your pain is very bad.", name: "PARACETAMOL", },
+            { links:"https://en.wikipedia.org/wiki/Face_masks_during_the_COVID-19_pandemic", imgn: "https://texasbreaking.com/wp-content/uploads/2021/07/different-types-of-protective-face-mask-against-royalty-free-image-1611338496_.jpg", details: "Masks, or facial coverings, are mainly to prevent the person wearing the mask from generating droplets from breathing, coughing, sneezing, etc.  It is these droplets that can carry a virus from one person to another.If you are sick it is recommended to stay home and not go to public places even with a mask or facial covering on. Surgical or hospital grade masks also provide protection from acquiring the virus from others and are combined with face shields for further droplet as well as eye protection.  These types of personal protective equipment are used by medical personnel and first responders to protect them while they do their jobs.", name: "MASK", },
+            { links:"https://en.wikipedia.org/wiki/Hand_sanitizer", imgn: "https://www.foodbusinessnews.net/ext/resources/2020/5/SanitizerMasks_Lead1.jpg?t=1589372265&width=1080", details: "Hand sanitizers are the science based magic liquid that removes dirt and germs from your hands within seconds without water. They also work effectively against viruses, but you need to be sure of the component of the sanitizer - make sure you check it on the label. Hand sanitizers are topical these days because it keeps you safe from the coronavirus outbreak. It can be used when soap and water are not available.A hand sanitizer with a lower level of alcohol percentage might not work for various germ types like virus and bacteria. They can only limit the germ growth and not kill them.If you are planning to buy a hand sanitizer that can protect you from coronavirus contamination, check for these ingredients on the label: ethyl alcohol/ethanol - should be above 60% concentration.", name: "SANITIZER", },
+            { links:"https://en.wikipedia.org/wiki/Glove", imgn: "https://ohsonline.com/-/media/OHS/OHS/Images/2010/04/disposable_nitrile_gloves.jpg", details: "Medical gloves  are used by health care personnel to prevent the spread of infection or illness. Medical gloves are disposable and include patient examination gloves and surgeon’s gloves.Disposable gloves are highly affordable and can easily fit your budget.Disposable gloves are worn to avoid the contact of germs and pollutants on your skin. This is not only important for hygiene but is even effective in protecting you from various skin diseases.There are various types of disposable gloves available in the market these days depending on the material they are made of. Some of the most popularly available gloves are made of rubber, Latex, nylon, nitrile and more. Just make sure that you do not reuse a pair of gloves and discard them safely to avoid the spread of diseases. ", name: "HAND GLOVES", },
+            { links:"https://en.wikipedia.org/wiki/Tissue_paper", imgn: "https://img3.exportersindia.com/product_images/bc-full/dir_178/5321799/pluma-ultra-soft-tissue-paper-30cm-x-30cm-1528554265-3529775.jpeg", details: "Tissue papers are playing vital role during this pendamic.Tissue papers can be used while sneezing.If the person is ill specially for cold and cough it's suggested them to use a tissue paper to cover their face in order to avoid the spread of germs. Tissue papers will be very smooth and soft and it is also user friendly.", name: "TISSUE PAPER", },
+            { links:"https://nymag.com/strategist/article/best-bar-soap.html", imgn: "https://pyxis.nymag.com/v1/imgs/957/9ae/68c6924a91715c39dc55ffcd8cb9348e4b-soap-lede.rsquare.w1200.jpg", details: "Water alone may rinse off dirt, but viruses and bacteria are so small they often need chemical and mechanical intervention to get their sticky nanoparticles out of the crevices that make up our unique fingerprints. That’s why soap is so important. It’s made for this job. Give soap 20 seconds, at least, of thorough scrubbing and the pin-shaped molecules will penetrate the types of bacteria and viruses, including COVID-19, that protect themselves with an oily lipid membrane. Like a nail popping a tire, the water-repelling end of the soap molecule, a hydrophobic tail that can bond with oil and fats, stabs COVID-19 and leaves the virus a deflated and broken sack of RNA cells.Therefore we suggest you to have atleast one soap bar.And wash your hands before eating or if you touch any objects", name: "SOAP", },
+            { links:"https://simple.wikipedia.org/wiki/Hand_washing", imgn: "https://i.ytimg.com/vi/uIYSL9Zj_mg/maxresdefault.jpg", details: "To stop the spread of COVID-19, along with other COVID appropriate behaviours, the practice of handwashing at regular intervals is a must, after coughing or sneezing, when caring for the sick, after using the toilet, before eating, while preparing food and after handling animals or animal waste. Handwashing after touching common surfaces such as doorknobs or handles, or after one comes back home from visiting a public place will keep ourselves and others around us safe.So we should keep hand wash with us.Touch your eyes, nose, and mouth with unwashed hands. Prepare or eat food and drinks with unwashed hands, Touch a contaminated surface or objects, Blow your nose, cough, or sneeze into hands and then touch other people’s hands or common objects by these all covid will spread. So HANDWASH is necessary ", name: "HAND WASH", },
+            { links:"#", imgn: "https://cdn.shopify.com/s/files/1/0972/2256/products/Sisal-Washcloth-Bath-Accessories_8e3d8e86-a9a3-4949-9c84-3129960ef5fe.jpg?v=1628838379", details: "It is good to have a handkerchief. It is good to cover your mouth and nose with handkerchief when you sneeze or cough.It will help to reduce the spread of germs", name: "HANDKERCHIEF", },
+            { links:"https://en.wikipedia.org/wiki/Cold_medicine", imgn: "https://www.petpoisonhelpline.com/wp-content/uploads/2020/02/First_Aid_Pills_50_1_50.jpg", details: "Since colds are caused by a virus for which there’s no cure, there’s no easy fix to prevent them from happening or make them go away.But over-the-counter (OTC) medications can ease your symptoms and lessen the impact the cold has on your day-to-day activities. Since most cold medications treat more than one symptom, it can be helpful to identify your most severe symptom and make your choice based on lessening that symptom.Be careful not to take two medications that contain the same active ingredients. If you double up, you can get too much of the drug in your system. This can lead to more side effects, up your chance for overdose, or other serious health problems. Always read labels carefully for expiration dates and side effects.", name: "COUGH TABLETS", },
+            { links:"https://en.wikipedia.org/wiki/Amrutanjan_(balm)", imgn: " https://i.gadgets360cdn.com/large/Best-Balms-for-Headaches-1588759174292.jpg", details: "When it comes to pain relief products in india balms have been quite popular for many years. It can be used for cold cough headache and sore throat.These balms are available in concentrated forms and a little amount of the balm can be rubbed over the area where you are having pain. A good pain relief balm can easily help you to get rid of most of the pains and cold and cough also in few minutes.Some of the most effective balms are : Tiger Balm White Ointment ,Zandu Ultra Power Balm ,Blue Nectar Destress ,Headache And Migraine Relief Roll-On ,Amrutanjan Strong Pain Balm ,Monison's Pain Balm ,Vicks® VapoRub™    ", name: "BALMS", },
+            ];
+        });
+      window.onscroll = function() {myFunction()};
+      
+      function myFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop >300) {
+          document.getElementById("scroller").style.background='#ffffffee'; 
+          var x = document.getElementsByClassName("ac");
+          var i;
+          for (i = 0; i < x.length; i++) {
+          x[i].style.color = "#2c7798";
+          x[i].style.display='inline-block';
+          }
+          
+        } else {
+
+          document.getElementById("scroller").style.background='#2c7798';
+          var x = document.getElementsByClassName("ac");
+          var i;
+          for (i = 0; i < x.length; i++) {
+          x[i].style.color = "white";
+          x[i].style.display='inline-block';
+          
+          }
+          }
+        }
+      
+      </script> 
+</body>
+
+</html>
